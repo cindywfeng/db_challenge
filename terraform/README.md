@@ -5,6 +5,7 @@ This Terraform module is designed to create an AWS Postgres Aurora DB Cluster wi
 ## Prerequisites
 1. AWS account with IAM user with permissions for EC2, RDS and IAM. Create an access key for the IAM user
 2. A VPC where the DB Cluster will be deployed
+3. Terraform 1.0.0+, with a 3.48.0+ aws provider set-up
 
 ## Module Input
 - vpc_id: The ID of the VPC the DB Cluster will be deployed into
