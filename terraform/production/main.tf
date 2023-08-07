@@ -23,7 +23,7 @@ resource "aws_db_subnet_group" "db_subnet" {
   # Create the first instance (index 0) as the primary instance (writer)
 resource "aws_rds_cluster_instance" "cluster_instances" {
   count              = var.instance_count
-  identifier         = count.index == 0 ? "aurora-cluster-demo-writer" : "aurora-cluster-demo-reader-${count.index}"
+  identifier         = count.index == 0 ? "${var.environment}-${var.region}-db-instance-writer" : "${var.environment}-${var.region}-db-instance-reader-${count.index}"
   cluster_identifier = aws_rds_cluster.db_cluster.id
   instance_class     = count.index == 0 ? var.reader_instance_class : var.writer_instance_class
   engine             = aws_rds_cluster.db_cluster.engine
