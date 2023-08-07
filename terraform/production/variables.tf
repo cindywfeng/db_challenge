@@ -58,6 +58,13 @@ variable "db_subnet_group_name" {
   default     = "db-subnet-group"
 }
 
+variable "subnet_group_name" {
+  type        = string
+  description = "DB subnet group name to associate with this DB instance."
+  default     = "db-subnet-group"
+}
+
+
 variable "instance_count" {
   type        = number
   description = "The number of instances to create"
