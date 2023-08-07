@@ -33,7 +33,7 @@ def clean_pods(namespaces):
                     print(f"Deleting pod {pod_name} in namespace {namespace} (status = {pod_status})")
 
                     # Delete the Pod
-                    v1.read_namespaced_pod(name=pod_name, namespace=namespace)
+                    v1.delete_namespaced_pod(name=pod_name, namespace=namespace)
                     deleted_pods.append(pod_name)
         
         # Print error message to stderr
