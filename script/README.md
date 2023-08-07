@@ -10,11 +10,11 @@ then output the pod name and state.
 3. `kubectl` configured
 
 ## Usage
-```python kubernetes_pod_cleaner.py namespace1 namespace2 namespace3 ...```
+```python kubernetes_clean.py namespace1 namespace2 namespace3 ...```
 
 ## Import as Module
 ```python
-from kubernetes_pod_cleaner import clean_pods
+from kubernetes_clean import clean_pods
 
 namespaces = ["namespace1", "namespace2", "namespace3"]
 clean_pods(namespaces)
