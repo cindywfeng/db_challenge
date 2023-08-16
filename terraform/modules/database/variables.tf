@@ -1,26 +1,9 @@
-variable "environment" {
-  type        = string
-  description = "Cluster environment e.g. sandbox, development, staging, production"
-  default     = "production"
-}
-
-variable "region" {
-  type        = string
-  description = "The name of the AWS region"
-  default     = "eu-west-2"
-}
-
 variable "engine" {
   type        = string
   description = "(Required) Name of the database engine to be used for this DB cluster. Valid Values: aurora-mysql, aurora-postgresql, mysql, postgres. (Note that mysql and postgres are Multi-AZ RDS clusters)."
   default     = "aurora-postgresql"
 }
 
-variable "availability_zones" {
-  type        = list(string)
-  description = "A list of Availability zones of the instance"
-  default     = ["eu-west-2a", "eu-west-2b", "eu-west-2c"]
-}
 
 variable "database_name" {
   type        = string
@@ -46,25 +29,6 @@ variable "preferred_backup_window" {
   default     = "07:00-09:00"
 }
 
-variable "vpc_security_group_ids" {
-  type        = list(string)
-  description = "List of VPC security groups to associate with the Cluster"
-  default     = ["sg-0b82ce66077181e3b"]
-}
-
-variable "db_subnet_group_name" {
-  type        = string
-  description = "DB subnet group to associate with this DB instance."
-  default     = "db-subnet-group"
-}
-
-variable "subnet_group_name" {
-  type        = string
-  description = "DB subnet group name to associate with this DB instance."
-  default     = "db-subnet-group"
-}
-
-
 variable "instance_count" {
   type        = number
   description = "The number of instances to create"
@@ -83,3 +47,40 @@ variable "writer_instance_class" {
   description = "Instance class for the writer instances"
   default     = "db.t3.small"
 }
+
+variable "vpc_security_group_ids" {
+  type        = list(string)
+  description = "List of VPC security groups to associate with the Cluster"
+  default     = ["sg-0b82ce66077181e3b"]
+}
+
+variable "db_subnet_group_name" {
+  type        = string
+  description = "DB subnet group to associate with this DB instance."
+  default     = "db-subnet-group"
+}
+
+variable "subnet_group_name" {
+  type        = string
+  description = "DB subnet group name to associate with this DB instance."
+  default     = "db-subnet-group"
+}
+
+variable "environment" {
+  type        = string
+  description = "Cluster environment e.g. sandbox, development, staging, production"
+  default     = "production"
+}
+
+variable "availability_zones" {
+  type        = list(string)
+  description = "A list of Availability zones of the instance"
+  default     = ["eu-west-2a", "eu-west-2b", "eu-west-2c"]
+}
+
+variable "region" {
+  type        = string
+  description = "The name of the AWS region"
+  default     = "eu-west-2"
+}
+
