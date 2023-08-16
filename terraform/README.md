@@ -17,6 +17,26 @@ This Terraform module is designed to create an AWS Postgres Aurora DB Cluster wi
 - endpoint (string): The DNS address of the DB cluster.
 - reader_endpoint (string): The DNS address of the read replica.
 
+# Folder structure
+```
+├── README.md
+├── environments
+│   ├── development
+│   └── production
+│       ├── main.tf
+│       ├── outputs.tf
+│       └── variables.tf
+├── modules
+│   ├── database
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   └── network
+│       ├── main.tf
+│       └── variables.tf
+└── providers.tf
+```
+
 ## Usage
 `cd` into production directory
 Log in to AWS account
