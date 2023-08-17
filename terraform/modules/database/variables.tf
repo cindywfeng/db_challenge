@@ -84,3 +84,9 @@ variable "skip_final_snapshot" {
   default     = "true"
 }
 
+variable "storage_encrypted" {
+  type        = string
+  description = "Determines whether a final DB snapshot is created before the DB cluster is deleted."
+  default     = "true"
+}
+

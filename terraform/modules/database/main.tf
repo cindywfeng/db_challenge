@@ -9,6 +9,7 @@ resource "aws_rds_cluster" "db_cluster" {
   preferred_backup_window = var.preferred_backup_window
   vpc_security_group_ids  = var.vpc_security_group_ids
   skip_final_snapshot     = var.skip_final_snapshot
+  storage_encrypted       = var.storage_encrypted
   db_subnet_group_name    = aws_db_subnet_group.db_subnet.name
 
 }
