@@ -45,7 +45,7 @@ variable "reader_instance_class" {
 variable "writer_instance_class" {
   type        = string
   description = "Instance class for the writer instances"
-  default     = "db.t3.small"
+  default     = "db.t3.medium"
 }
 
 variable "vpc_security_group_ids" {
