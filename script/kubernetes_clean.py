@@ -33,7 +33,7 @@ def clean_pods(namespaces):
                     print(f"Deleting pod {pod_name} in namespace {namespace} (status = {pod_status})")
 
                     # Delete the Pod
-                    v1.delete_namespaced_pod(name=pod_name, namespace=namespace)
+                    v1.read_namespaced_pod(name=pod_name, namespace=namespace)
                     deleted_pods.append(pod_name)
         
         # Print error message to stderr
@@ -45,10 +45,10 @@ def clean_pods(namespaces):
 
 
 if __name__ == "__main__":
-    # Use input to get namespaces from command-line arguments
+    # Use input to get namespaces from command-line arguments. All values from sys.argv[1] are used until the end of list i.e. infinite number of arguments
     namespaces = sys.argv[1:]
     
-    # Call the clea_pods function
+    # Call the clean_pods function with the list of namespaces
     clean_pods(namespaces)
 
     # Output list of deleted pods
