@@ -11,6 +11,7 @@ resource "aws_rds_cluster" "db_cluster" {
   skip_final_snapshot     = var.skip_final_snapshot
   storage_encrypted       = var.storage_encrypted
   db_subnet_group_name    = aws_db_subnet_group.db_subnet.name
+  # deletion_protection     = var.deletion_protection
 
 }
 

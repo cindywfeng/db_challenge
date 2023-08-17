@@ -86,7 +86,14 @@ variable "skip_final_snapshot" {
 
 variable "storage_encrypted" {
   type        = string
-  description = "Determines whether a final DB snapshot is created before the DB cluster is deleted."
+  description = "Specifies whether the DB cluster is encrypted."
   default     = "true"
 }
+
+# variable "deletion_protection" {
+#   type        = string
+#   description = "If the DB instance should have deletion protection enabled."
+#   default     = "true"
+# }
+
 
