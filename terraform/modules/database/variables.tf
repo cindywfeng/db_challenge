@@ -11,12 +11,6 @@ variable "database_name" {
   default     = "auroradb"
 }
 
-variable "master_username" {
-  type        = string
-  description = "The master username for the RDS cluster."
-  default     = "octopus"
-}
-
 variable "backup_retention_period" {
   type        = number
   description = "The number of days to retain automated backups."
@@ -82,5 +76,11 @@ variable "region" {
   type        = string
   description = "The name of the AWS region"
   default     = "eu-west-2"
+}
+
+variable "skip_final_snapshot" {
+  type        = string
+  description = "Determines whether a final DB snapshot is created before the DB cluster is deleted."
+  default     = "true"
 }
 

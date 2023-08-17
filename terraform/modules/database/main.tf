@@ -3,12 +3,14 @@ resource "aws_rds_cluster" "db_cluster" {
   engine                  = var.engine
   availability_zones      = var.availability_zones
   database_name           = var.database_name
-  master_username         = var.master_username
-  master_password         = random_string.master_password.result
+  master_username         = local.db-credentials.master_username
+  master_password         = local.db-credentials.master_password
   backup_retention_period = var.backup_retention_period
   preferred_backup_window = var.preferred_backup_window
   vpc_security_group_ids  = var.vpc_security_group_ids
+  skip_final_snapshot     = var.skip_final_snapshot
   db_subnet_group_name    = aws_db_subnet_group.db_subnet.name
+
 }
 
 resource "aws_db_subnet_group" "db_subnet" {
@@ -26,9 +28,13 @@ resource "aws_rds_cluster_instance" "cluster_instances" {
   depends_on         = [aws_rds_cluster.db_cluster]
 }
 
-# Create a random string for the master_password for the cluster
-resource "random_string" "master_password" {
-  length  = 16
-  special = true
-  numeric  = true
+
+data "aws_secretsmanager_secret_version" "creds" {
+  secret_id = "db-credentials"
+}
+
+locals {
+  db-credentials = jsondecode(
+    data.aws_secretsmanager_secret_version.creds.secret_string
+  )
 }
